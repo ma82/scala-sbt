@@ -5,7 +5,7 @@
 #
 
 # Pull base image
-FROM openjdk:11.0.2
+FROM oracle/graalvm-ce:1.0.0-rc14
 
 # Env variables
 ENV SCALA_VERSION 2.12.8
@@ -20,11 +20,9 @@ RUN \
 
 # Install sbt
 RUN \
-  curl -L -o sbt-$SBT_VERSION.deb https://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb && \
-  dpkg -i sbt-$SBT_VERSION.deb && \
-  rm sbt-$SBT_VERSION.deb && \
-  apt-get update && \
-  apt-get install sbt && \
+  (curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.repo) && \
+  yum install -y sbt && \
+  yum clean all && \
   sbt sbtVersion && \
   mkdir project && \
   echo "scalaVersion := \"${SCALA_VERSION}\"" > build.sbt && \
