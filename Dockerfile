@@ -5,7 +5,7 @@
 #
 
 # Pull base image
-FROM oracle/graalvm-ce:1.0.0-rc14
+FROM oracle/graalvm-ce:1.0.0-rc15
 
 # Env variables
 ENV SCALA_VERSION 2.12.8
