@@ -5,11 +5,11 @@
 #
 
 # Pull base image
-FROM oracle/graalvm-ce:1.0.0-rc15
+FROM oracle/graalvm-ce:19.2.0
 
 # Env variables
-ENV SCALA_VERSION 2.12.8
-ENV SBT_VERSION 1.2.8
+ENV SCALA_VERSION 2.12.9
+ENV SBT_VERSION 1.3.0
 
 # Install Scala
 ## Piping curl directly in tar
